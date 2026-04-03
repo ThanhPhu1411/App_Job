@@ -20,21 +20,21 @@ class searchjob{
     final token = prefs.getString('jwt_token');
 
     if (token == null) {
-      print("❌ Chưa có token, vui lòng đăng nhập trước!");
+      print("Chưa có token, vui lòng đăng nhập trước!");
       return null;
     }
     final response = await client.get(
       Uri.parse('$baseUrl?page=$page&pageSize=$pageSize&keyword=$keyword&location=$location&category=$category'),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token', // 👈 gửi token trong header
+        'Authorization': 'Bearer $token', //gửi token trong header
       },
     );
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       return data; // data['job'] chính là danh sách công việc
     } else {
-      print('❌ Lỗi API: ${response.statusCode}');
+      print(' Lỗi API: ${response.statusCode}');
       return null;
     }
   }

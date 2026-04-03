@@ -98,7 +98,9 @@ class _JobDetailPageState extends State<JobDetailPage> {
                         size: 18, color: Colors.grey),
                     const SizedBox(width: 4),
                     Text(jobDetail?['salary'] ?? 'Không có lương',
-                        style: const TextStyle(fontSize: 18, color: Color(0xFF451DA1))),
+                        style: const TextStyle(
+                            fontSize: 18, color: Color(0xFF451DA1)
+                        )),
                   ],
                 ),
                 Row(

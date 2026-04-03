@@ -1,22 +1,22 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:webtimvieclam/page/EmployerRegisterPage.dart';
-import 'package:webtimvieclam/service/AuthService.dart';
+import 'package:webtimvieclam/login_page.dart';
 import 'package:webtimvieclam/page/EmployerLoginPage.dart';
+import 'package:webtimvieclam/service/AuthService.dart';
+import 'package:webtimvieclam/service/EmployerAutService.dart';
 
-import 'login_page.dart';
 
-class RegisterPage extends StatefulWidget {
+class EmployerRegisterPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _RegisterPageState();
+  State<StatefulWidget> createState() => _EmployerRegisterPage();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _EmployerRegisterPage extends State<EmployerRegisterPage> {
   final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-  final AuthService _authService = AuthService();
+  final AuthEmployerService _service = AuthEmployerService();
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               const Text(
-                "Nhanh chóng và dễ dàng hơn bao giờ hết",
+                "Đăng ký nhanh với nhà tuyển dụng ",
                 style: TextStyle(fontSize: 18, color: Color(0xFF451DA1)),
               ),
 
@@ -131,7 +131,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           );
                           return;
                         }
-                        final result = await _authService.register(email, password, userName);
+                        final result = await _service.register(email, password, userName);
                         if(result !=null) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text(result['message'])),
@@ -143,7 +143,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => LoginPage()),
+                                  builder: (context) => LoginEmployerPage()),
                             );
                           }
                         }else{
@@ -196,26 +196,26 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               Padding(padding: EdgeInsets.only(bottom: 40),
-              child:GestureDetector(
-                onTap: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>EmployerRegisterPage()),);
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.refresh,
-                    color: Color(0xFF3277D8),
-                    size: 30,
-                    ),
-                    Text("Chuyển sang nhà tuyển dụng",
-                    style:TextStyle(
-                      color: Color(0xFF3277D8),
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500
-                    ),)
-                  ],
-                ),
-              ),)
+                child:GestureDetector(
+                  onTap: (){
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginPage()),);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.refresh,
+                        color: Color(0xFF3277D8),
+                        size: 30,
+                      ),
+                      Text("Chuyển sang ứng viên",
+                        style:TextStyle(
+                            color: Color(0xFF3277D8),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500
+                        ),)
+                    ],
+                  ),
+                ),)
             ],
           ),
         ),

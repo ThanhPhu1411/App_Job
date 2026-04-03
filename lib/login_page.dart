@@ -1,5 +1,6 @@
   import 'package:flutter/gestures.dart';
   import 'package:flutter/material.dart';
+import 'package:webtimvieclam/page/EmployerRegisterPage.dart';
 import 'package:webtimvieclam/register_page.dart';
 import 'package:webtimvieclam/service/AuthService.dart';
 import 'package:webtimvieclam/view/index.dart';
@@ -13,6 +14,7 @@ import 'package:webtimvieclam/view/index.dart';
     final _emailController = TextEditingController();
     final _passwordController = TextEditingController();
     final AuthService _authService = AuthService();
+
 
     @override
     Widget build(BuildContext context) {
@@ -173,12 +175,36 @@ import 'package:webtimvieclam/view/index.dart';
                       ),
                     ),
                   ),
+                  Padding(padding: EdgeInsets.only(bottom: 40),
+                    child:GestureDetector(
+                      onTap: (){
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>EmployerRegisterPage()),);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.refresh,
+                            color: Color(0xFF3277D8),
+                            size: 30,
+                          ),
+                          Text("Chuyển sang nhà tuyển dụng",
+                            style:TextStyle(
+                                color: Color(0xFF3277D8),
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500
+                            ),)
+                        ],
+                      ),
+                    ),)
 
 
                   // 🔹 Thêm khoảng cách để tránh bị che khi bàn phím mở
-                  const SizedBox(height: 20),
+
+
                 ],
+
               ),
+
             ),
           ),
         ),

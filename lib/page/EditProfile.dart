@@ -184,7 +184,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
       decoration: InputDecoration(
         labelText: requiredField ? "$label *" : label,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-
       ),
       validator: (value) {
         if (requiredField && (value == null || value.isEmpty)) {

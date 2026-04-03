@@ -96,7 +96,8 @@ class _NotificationPageState extends State<NotificationPage> {
                       : const Icon(Icons.mark_email_unread, color: Colors.blue),
                       onTap: ()async{
                         await markAsRead( n['id']);
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>NotificationDetail(notifiId:n['id']),),);
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context)=>NotificationDetail(notifiId:n['id']),),);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('Đã đánh dấu là đã đọc')),
                         );
